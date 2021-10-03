@@ -182,8 +182,12 @@ static inline const char *get_name(
 void pc386_parse_console_arguments(void)
 {
   rtems_device_minor_number minor;
-  rtems_device_minor_number minor_console = 0;
-  rtems_device_minor_number minor_printk = 0;
+  /*
+   * TODO: define these options statically using CONFIGURE_* macros
+   *       from the init.c configuration file in the application
+   */
+  rtems_device_minor_number minor_console = BSP_CONSOLE_COM1;
+  rtems_device_minor_number minor_printk = BSP_CONSOLE_COM1;
 
   /*
    * Assume that if only --console is specified, that printk() should
